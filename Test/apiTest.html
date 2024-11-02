@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+</head>
+<body>
+    <h1>Currency Converter</h1>
+    <p>Select the base currency and target currency to view the exchange rate.</p>
+
+    <label for="base-currency">Base Currency:</label>
+    <select id="base-currency">
+        <option value="USD">USD - United States Dollar</option>
+        <option value="EUR">EUR - Euro</option>
+        <option value="GBP">GBP - British Pound</option>
+        <option value="JPY">JPY - Japanese Yen</option>
+        <option value="CNY">CNY - Chinese Yuan</option>
+    </select>
+
+    <label for="target-currency">Target Currency:</label>
+    <select id="target-currency">
+        <option value="USD">USD - United States Dollar</option>
+        <option value="EUR">EUR - Euro</option>
+        <option value="GBP">GBP - British Pound</option>
+        <option value="JPY">JPY - Japanese Yen</option>
+        <option value="CNY">CNY - Chinese Yuan</option>
+    </select>
+
+    <button onclick="getExchangeRate()">Get Exchange Rate</button>
+
+    <h2 id="result">Exchange Rate: Awaiting query...</h2>
+
+    <script>
+        async function getExchangeRate() {
+            const apiKey = "iyGtlfhTlmW0VamOGIh609j6w0JQhLcQ"; 
+            const baseCurrency = document.getElementById("base-currency").value;
+            const targetCurrency = document.getElementById("target-currency").value;
+
+            const url = `https://api.currencybeacon.com/v1/latest?api_key=${apiKey}&base=${baseCurrency}`;
+
+            try {
+                const response = await fetch(url);
+                if (response.ok) {
+                    const data = await response.json();
+                    const rate = data.rates[targetCurrency];
+
+                    if (rate) {
+                        document.getElementById("result").innerText = `Exchange Rate: 1 ${baseCurrency} = ${rate} ${targetCurrency}`;
+                    } else {
+                        document.getElementById("result").innerText = `Unable to find rate for ${targetCurrency}.`;
+                    }
+                } else {
+                    document.getElementById("result").innerText = `Request failed with status code: ${response.status}`;
+                }
+            } catch (error) {
+                document.getElementById("result").innerText = `Error: ${error}`;
+            }
+        }
+    </script>
+</body>
+</html>
