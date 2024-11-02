@@ -35,10 +35,10 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 ## Credits
 
 List all collaborators with links to their GitHub profiles.  
-Hongbing Qiu   @mk20661  
-Jinming Xia    @JINMING2333    
-Zhiyu Cao      @UCLcaozhiyu  
-Yue Zhu        @XLunaXX07
+Hongbing Qiu   [@mk20661](https://github.com/mk20661)  
+Jinming Xia    [@JINMING2333](https://github.com/JINMING2333)   
+Zhiyu Cao      [@UCLcaozhiyu](https://github.com/UCLcaozhiyu)  
+Yue Zhu        [@XLunaXX07](https://github.com/XLunaXX07)
 
 If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
 
