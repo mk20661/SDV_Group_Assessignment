@@ -4,8 +4,8 @@
 #include <TimeLib.h>
 
 // Wi-Fi 网络信息
-const char* ssid = "Peter";           // 替换为您的Wi-Fi SSID
-const char* password = "11111111";   // 替换为您的Wi-Fi密码
+const char* ssid = "QAKIGHT";           // 替换为您的Wi-Fi SSID
+const char* password = "qhb12345678";   // 替换为您的Wi-Fi密码
 
 // NTP 客户端设置
 WiFiUDP ntpUDP;
