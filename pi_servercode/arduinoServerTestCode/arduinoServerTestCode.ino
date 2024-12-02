@@ -10,6 +10,8 @@ const char* password = SECRET_PASS;
 const char* server = "10.129.119.99"; // Replace with the Raspberry Pi's IP address
 const int port = 5000;
 WiFiClient client;
+int update_left_weeks = 0;
+int update_reaming_holidays = 0;
 
 void setup() {
     Serial.begin(115200);
@@ -74,6 +76,7 @@ void getBankHoldiay(){
         const char* date = doc["date"];
         const char* name = doc["name"];
         const int days_until = doc["days_until"];
+        update_reaming_holidays = days_until;
 
         Serial.println("Next holiday:");
         Serial.print("Name: ");
@@ -130,6 +133,8 @@ void getTermInfo(){
       const char* current_date = doc["current_date"];
       const int week_number = doc["week_number"];
       const int term = doc["term"];
+      const int left_weeks = doc["left_weeks"];
+      update_left_weeks = left_weeks;
 
       // Print term week details
       Serial.println("Current Term Week Data:");
@@ -141,6 +146,8 @@ void getTermInfo(){
       Serial.println(week_number);
       Serial.print("Term: ");
       Serial.println(term);
+      Serial.print("left weeks: ");
+      Serial.println(left_weeks);
   } else {
       Serial.println("Failed to connect to the server.");
   }

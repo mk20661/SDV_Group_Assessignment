@@ -45,6 +45,16 @@ def determine_which_term(current_week):
         term_order = 3
     return term_order
 
+def get_left_term_weeks(term_order, current_week):
+    left_week = 0
+    if term_order == 1 or term_order == 2:
+        left_week = 15 - current_week + 1
+    elif term_order == 3:
+        left_week = 7 - current_week + 1
+    
+    return left_week
+
+
 @app.route('/term-week', methods=['GET'])
 def get_term_week():
     """
@@ -61,13 +71,15 @@ def get_term_week():
             term_start = get_term_start(current_year - 1)
 
         week_number = calculate_week(term_start, current_date)  # Calculate the week number
+        term_order = determine_which_term(week_number)
 
         if isinstance(week_number, int):
             return jsonify({
                 "term_start": term_start.isoformat(),
                 "current_date": current_date.isoformat(),
                 "week_number": week_number,
-                "term": determine_which_term(week_number)
+                "term": term_order,
+                "left_weeks": get_left_term_weeks(term_order, week_number)
             })
         else:
             return jsonify({
