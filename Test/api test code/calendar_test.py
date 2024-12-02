@@ -3,48 +3,61 @@ from calendar import monthcalendar
 
 def get_term_start(year):
     """
-    获取学期开始日期：每年9月的第5个星期的星期一。
+    Get the term start date: 5th week in September
     """
-    september = monthcalendar(year, 9)
-    fifth_week = september[4]
+    september = monthcalendar(year, 9)  
+    fifth_week = september[4] 
     term_start = date(year, 9, fifth_week[0] if fifth_week[0] != 0 else fifth_week[1])
     return term_start
 
 def calculate_week(term_start, current_date):
     """
-    修正逻辑，精确计算当前日期是学期的第几周。
+    Adjust logic to accurately calculate which week of the term the current date falls into.
     """
-    days_difference = (current_date - term_start).days
-    if days_difference < 0:
-        return "当前日期早于学期开始日期"
+    days_difference = (current_date - term_start).days  # Calculate the difference in days
+    if days_difference < 0:  # If the current date is before the term start date
+        return "The current date is before the term start date"
 
-    # 满7天后从第2周开始计数
-    if days_difference % 7 == 0:  # 恰好整周
+    # Start counting from Week 2 after a full 7 days
+    if days_difference % 7 == 0:  # If the difference is exactly a multiple of 7 days
         current_week = days_difference // 7
-    else:  # 天数不足一整周
+    else:  # If there are leftover days (not a full week)
         current_week = days_difference // 7 + 1
     return current_week
 
+def determine_which_term(currentWeek):
+    term_order = 0
+    if currentWeek <= 15 :
+        term_order = 1
+    elif currentWeek > 15 and currentWeek <= 30 :
+        term_order = 2
+    elif currentWeek > 30:
+        term_order = 3
+    
+    return term_order
+
 def determine_current_term_week():
     """
-    自动根据当前日期判断是第几周。
+    Automatically determine the current week of the term based on today's date.
     """
-    current_date = date.today()  # 获取当前日期
+    current_date = date.today()  # Get today's date
     current_year = current_date.year
 
-    # 判断是否在当前学年或上一学年
-    if current_date >= date(current_year, 9, 1):  # 9月1日之后
-        term_start = get_term_start(current_year)
-    else:  # 9月1日之前，属于上一学年的学期
+    # Determine whether the current date belongs to the current academic year or the previous one
+    if current_date >= date(current_year, 9, 1):  # If today is on or after September 1
+        term_start = get_term_start(current_year)  # Use this year's term start date
+    else:  # If today is before September 1, it belongs to the previous academic year's term
         term_start = get_term_start(current_year - 1)
 
-    week_number = calculate_week(term_start, current_date) - 1
+    week_number = calculate_week(term_start, current_date)  # Calculate the week number
     return term_start, current_date, week_number
 
-# 获取结果
+# Get the result
 term_start, current_date, week_number = determine_current_term_week()
 
+# Output the results
 if isinstance(week_number, int):
-    print(f"从 {term_start} 开始，今天 {current_date} 是第 {week_number} 周。")
+    print(f"The term started on {term_start}. Today, {current_date}, is term {determine_which_term(week_number)} Week {week_number}.")
 else:
-    print(f"今天 {current_date} ：{week_number}")
+    print(f"Today, {current_date}: {week_number}")
+

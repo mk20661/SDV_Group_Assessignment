@@ -7,8 +7,9 @@ const char* ssid = SECRET_SSID;
 const char* password = SECRET_PASS;
 
 // Flask server details
-const char* server = "192.168.31.54"; // Replace with the Raspberry Pi's IP address
+const char* server = "10.129.119.99"; // Replace with the Raspberry Pi's IP address
 const int port = 5000;
+WiFiClient client;
 
 void setup() {
     Serial.begin(115200);
@@ -21,12 +22,23 @@ void setup() {
     }
     Serial.println("WiFi connected!");
 
+    getBankHoldiay();
+    getTermInfo();
+
+}
+
+void loop() {
+    
+}
+
+void getBankHoldiay(){
+  
     // Request the next holiday
-    WiFiClient client;
     if (client.connect(server, port)) {
         // Send the HTTP GET request
         client.println("GET /next-holiday HTTP/1.1");
-        client.println("Host: 192.168.31.54");
+        client.println("Host: ");
+        client.println(server);
         client.println("Connection: close");
         client.println();
 
@@ -75,6 +87,61 @@ void setup() {
     }
 }
 
-void loop() {
-    
+
+void getTermInfo(){
+  // Request the term week data
+  if (client.connect(server, port)) {
+      // Send the HTTP GET request
+      client.println("GET /term-week HTTP/1.1");
+      client.println("Host: " + String(server));
+      client.println("Connection: close");
+      client.println();
+
+      String response = "";
+      bool isBody = false; // Flag to indicate when the HTTP body starts
+      while (client.connected() || client.available()) {
+          String line = client.readStringUntil('\n');
+          if (line == "\r") {
+              // HTTP headers end, body starts next
+              isBody = true;
+              continue;
+          }
+          if (isBody) {
+              response += line; // Append only the body content
+          }
+      }
+      client.stop();
+
+      Serial.println("Extracted JSON data:");
+      Serial.println(response);
+
+      // Parse the JSON response
+      StaticJsonDocument<256> doc; // Adjust size based on response
+      DeserializationError error = deserializeJson(doc, response);
+
+      if (error) {
+          Serial.print("JSON parsing failed: ");
+          Serial.println(error.c_str());
+          return;
+      }
+
+      // Extract term week details
+      const char* term_start = doc["term_start"];
+      const char* current_date = doc["current_date"];
+      const int week_number = doc["week_number"];
+      const int term = doc["term"];
+
+      // Print term week details
+      Serial.println("Current Term Week Data:");
+      Serial.print("Term Start: ");
+      Serial.println(term_start);
+      Serial.print("Current Date: ");
+      Serial.println(current_date);
+      Serial.print("Week Number: ");
+      Serial.println(week_number);
+      Serial.print("Term: ");
+      Serial.println(term);
+  } else {
+      Serial.println("Failed to connect to the server.");
+  }
 }
