@@ -61,11 +61,21 @@ void loop() {
 }
 
 void updateDisplay() {
-    // Map `update_reaming_holidays` to Servo position (0 to 180 degrees)
-    int servoPosition = map(constrain(update_reaming_holidays, 0, 31), 0, 30, 0, 180);
+    // Map `update_reaming_holidays` to Servo position with specific logic
+    int servoPosition;
+    if (update_reaming_holidays >= 31) {
+        servoPosition = 180; // Cap at 180 degrees for holidays >= 31
+    } else {
+        servoPosition = (update_reaming_holidays - 1) * 6; // Calculate position
+    }
+
+    // Ensure servoPosition is within bounds (0 to 180 degrees)
+    servoPosition = constrain(servoPosition, 0, 180);
+    
     servo1.write(servoPosition);
     Serial.print("Servo Position: ");
     Serial.println(servoPosition);
+
 
     // Control the LED strip based on `update_term_order`
     if (update_term_order == 1) {
