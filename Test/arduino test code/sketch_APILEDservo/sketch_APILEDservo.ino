@@ -9,7 +9,7 @@ const char* ssid = SECRET_SSID;
 const char* password = SECRET_PASS;
 
 // Flask server details
-const char* server = "10.129.119.99"; // Replace with the Raspberry Pi's IP address
+const char* server = "10.23.241.8"; // Replace with the Raspberry Pi's IP address
 const int port = 5000;
 WiFiClient client;
 
