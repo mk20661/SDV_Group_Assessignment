@@ -25,11 +25,7 @@ def calculate_week(term_start, current_date):
     if days_difference < 0:  # If the current date is before the term start date
         return "The current date is before the term start date"
 
-    # Start counting from Week 2 after a full 7 days
-    if days_difference % 7 == 0:  # If the difference is exactly a multiple of 7 days
-        current_week = days_difference // 7
-    else:  # If there are leftover days (not a full week)
-        current_week = days_difference // 7 + 1
+    current_week = int(days_difference / 7)
     return current_week
 
 def determine_which_term(current_week):

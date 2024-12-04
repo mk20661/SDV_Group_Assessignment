@@ -1,6 +1,8 @@
 sudo apt update
 sudo apt install python3-venv python3-pip -y
 
+pip install flask-cors
+
 
 mkdir ~/my_project
 cd ~/my_project
