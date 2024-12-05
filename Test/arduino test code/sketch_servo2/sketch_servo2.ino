@@ -1,4 +1,4 @@
-#include <Servo.h> // 使用标准Servo库
+#include <ESP32Servo.h>
 
 Servo servo1; 
 

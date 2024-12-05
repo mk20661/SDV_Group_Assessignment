@@ -73,7 +73,7 @@ void loop() {
     getBankHoliday();
     getTermInfo();
     updateDisplay(); // Update LED and Servo based on server data
-    delay(1000);    // Update every 10 seconds
+    delay(10000);    // Update every 10 seconds
 }
 
 void updateDisplay() {
@@ -97,14 +97,14 @@ void updateDisplay() {
     if (update_term_order == 1) {
         lightPhase(32, 32, 32, update_left_weeks, 1, true); // Gray for term 1
         term_LED(32, 32, 32,0);
-        term_LED(155, 5, 32,1);
-        term_LED(0, 91, 155,2);
+        term_LED(155, 5, 32,2);
+        term_LED(0, 91, 155,4);
     } else if (update_term_order == 2) {
         lightPhase(155, 5, 80, update_left_weeks, 1, true); // Purple for term 2
         term_LED(0, 0, 0,0);
     } else {
         lightPhase(0, 91, 155, update_left_weeks, 1, false); // Blue for other terms
-        term_LED(0, 0, 0,1);
+        term_LED(0, 0, 0,2);
     }
     Serial.print("Active LEDs: ");
     Serial.println(update_left_weeks);
@@ -113,7 +113,7 @@ void updateDisplay() {
 void lightPhase(int red, int green, int blue, int numLEDs, int timePerLED, bool isYellowSixth) {
     for (int i = 0; i < numLEDs; i++) {
         // If `isYellowSixth` is true and it's the sixth LED, light it yellow
-        if (isYellowSixth && i == 5) { 
+        if (isYellowSixth && i == 8) { 
              week_strip.setPixelColor(i,  week_strip.Color(155, 155, 0)); // Yellow
         } else {
              week_strip.setPixelColor(i,  week_strip.Color(red, green, blue)); // Other LEDs in specified color
