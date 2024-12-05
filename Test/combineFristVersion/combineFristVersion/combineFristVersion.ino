@@ -36,7 +36,7 @@ int update_left_weeks = 0;
 int update_reaming_holidays = 0;
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin(9600);
     WiFi.begin(ssid, password);
     // Attempt to connect to WiFi
     while (WiFi.status() != WL_CONNECTED) {
@@ -54,7 +54,7 @@ void setup() {
     // Initialize Servo
     servo.attach(servoPin); 
     servo.write(0);  // Reset to 0 degrees
-    delay(500);
+    delay(1000);
 
     // Initialize LED strip
      week_strip.begin();           
