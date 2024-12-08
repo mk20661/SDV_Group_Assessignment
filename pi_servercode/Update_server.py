@@ -150,10 +150,30 @@ def get_next_chinese_holiday():
 
 @app.route('/ddl', methods=['GET'])
 def get_courses():
-    """
-    API endpoint to return course data with deadlines.
-    """
-    return jsonify(ddl)
+    # Get the current date and time
+    current_time = datetime.now()
+
+    # List to store courses with non-expired deadlines
+    filtered_courses = []
+    for course in ddl["courses"]:
+        # List to store non-expired deadlines for the current course
+        filtered_deadlines = []
+        for deadline in course["deadlines"]:
+            # Combine the date and time fields into a datetime object
+            deadline_time = datetime.strptime(f"{deadline['date']} {deadline['time']}", "%Y-%m-%d %H:%M")
+            # Check if the deadline is in the future
+            if deadline_time > current_time:
+                filtered_deadlines.append(deadline)
+        # Only include the course if it has at least one non-expired deadline
+        if filtered_deadlines:
+            filtered_courses.append({
+                "name": course["name"],
+                "code": course["code"],
+                "deadlines": filtered_deadlines
+            })
+
+    # Return the filtered courses as a JSON response
+    return jsonify({"courses": filtered_courses})
 
 
 if __name__ == '__main__':
