@@ -15,6 +15,10 @@ file_path = os.path.join(app.root_path, 'chineseholidy.json')
 with open(file_path, 'r') as f:
     chinese_holidays = json.load(f)
 
+file_path = os.path.join(app.root_path,'ddl.json')
+with open(file_path, 'r') as f:
+    ddl = json.load(f)
+
 def get_term_start(year):
     """
     Get the term start date: 5th week in September
@@ -142,6 +146,15 @@ def get_next_chinese_holiday():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+@app.route('/ddl', methods=['GET'])
+def get_courses():
+    """
+    API endpoint to return course data with deadlines.
+    """
+    return jsonify(ddl)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
