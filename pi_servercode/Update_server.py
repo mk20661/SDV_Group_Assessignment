@@ -54,11 +54,11 @@ def get_left_term_weeks(term_order, current_week):
     Calculate the number of weeks left in the current term.
     """
     if term_order == 1:
-        return 15 - current_week
+        return 15 - current_week + 1
     elif term_order == 2:
-        return 30 - current_week
+        return 30 - current_week + 1
     elif term_order == 3:
-        return 37 - current_week
+        return 37 - current_week + 1
     return 0
 
 @app.route('/term-week', methods=['GET'])
