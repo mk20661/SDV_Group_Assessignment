@@ -36,7 +36,7 @@ int update_left_weeks = 0;
 int update_reaming_holidays = 0;
 
 void setup() {
-    Serial.begin(9600);
+    Serial.begin(115200);
     WiFi.begin(ssid, password);
     // Attempt to connect to WiFi
     while (WiFi.status() != WL_CONNECTED) {
@@ -72,8 +72,9 @@ void setup() {
 void loop() {
     getBankHoliday();
     getTermInfo();
+    turnOffAllLEDs();
     updateDisplay(); // Update LED and Servo based on server data
-    delay(10000);    // Update every 10 seconds
+    delay(1000);    // Update every 10 seconds
 }
 
 void updateDisplay() {
@@ -97,7 +98,9 @@ void updateDisplay() {
     if (update_term_order == 1) {
         lightPhase(32, 32, 32, update_left_weeks, 1, true); // Gray for term 1
         term_LED(32, 32, 32,0);
+        term_LED( 0, 32, 0,1);
         term_LED(155, 5, 32,2);
+        term_LED( 0, 32, 0,3);
         term_LED(0, 91, 155,4);
     } else if (update_term_order == 2) {
         lightPhase(155, 5, 80, update_left_weeks, 1, true); // Purple for term 2
@@ -110,12 +113,32 @@ void updateDisplay() {
     Serial.println(update_left_weeks);
 }
 
+void turnOffAllLEDs() {
+    // Turn off all LEDs in the week_strip
+    for (int i = 0; i < WEEK_LED_COUNT; i++) {
+        week_strip.setPixelColor(i, week_strip.Color(0, 0, 0)); // Black (off)
+    }
+    week_strip.show(); // Update the week LED strip
+
+    // Turn off all LEDs in the term_strip
+    for (int i = 0; i < TERM_NUM_LED; i++) {
+        term_strip.setPixelColor(i, term_strip.Color(0, 0, 0)); // Black (off)
+    }
+    term_strip.show(); // Update the term LED strip
+
+    Serial.println("All LEDs turned off.");
+}
+
 void lightPhase(int red, int green, int blue, int numLEDs, int timePerLED, bool isYellowSixth) {
     for (int i = 0; i < numLEDs; i++) {
         // If `isYellowSixth` is true and it's the sixth LED, light it yellow
-        if (isYellowSixth && i == 8) { 
+        if (isYellowSixth && i == 9) { 
              week_strip.setPixelColor(i,  week_strip.Color(155, 155, 0)); // Yellow
-        } else {
+        }
+         else if (isYellowSixth && (i == 0 || i == 1 || i == 2 || i == 3)) {
+            week_strip.setPixelColor(i, week_strip.Color(0, 255, 0)); // Green
+        }  
+        else {
              week_strip.setPixelColor(i,  week_strip.Color(red, green, blue)); // Other LEDs in specified color
         }
     }
