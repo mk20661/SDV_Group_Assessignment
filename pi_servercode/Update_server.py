@@ -67,7 +67,7 @@ def get_term_week():
     API endpoint to get the current term week.
     """
     try:
-        current_date = date(2025,1,25)
+        current_date = date.today()
         current_year = current_date.year
 
         # Determine the academic year
@@ -106,10 +106,10 @@ def get_next_holiday():
         response = requests.get(GOV_UK_URL)
         data = response.json()
         holidays = data["england-and-wales"]["events"]
-        current_date = datetime.now()
+        current_date = date.today()
 
         for holiday in holidays:
-            holiday_date = datetime.strptime(holiday["date"], "%Y-%m-%d")
+            holiday_date = datetime.strptime(holiday["date"], "%Y-%m-%d").date()
             if holiday_date > current_date:
                 days_until = (holiday_date - current_date).days
                 return jsonify({
