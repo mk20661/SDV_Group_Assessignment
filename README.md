@@ -58,4 +58,3 @@ We worked together to design, build, and refine every part of the project, from 
 This project is open-source and licensed under the MIT License.  
 
 Want to see more? Check out our [GitHub repository](https://github.com/mk20661/SDV_Group_Assessignment).  
-![image](https://github.com/user-attachments/assets/dfdf9da7-fc37-4096-8684-30e4da85e196)
