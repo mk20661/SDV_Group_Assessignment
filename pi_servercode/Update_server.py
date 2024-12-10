@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 import requests
-from datetime import datetime, date
+from datetime import datetime, date,timedelta
 from calendar import monthcalendar
 import json
 import os
@@ -25,17 +25,17 @@ def get_term_start(year):
     """
     september = monthcalendar(year, 9)
     fifth_week = september[4]
-    term_start = date(year, 9, fifth_week[0] if fifth_week[0] != 0 else fifth_week[1])
+    term_start = date(year, 9, fifth_week[0] if fifth_week[0] != 0 else fifth_week[1]) + timedelta(weeks=1)
     return term_start
 
 def calculate_week(term_start, current_date):
     """
     Adjust logic to accurately calculate which week of the term the current date falls into.
     """
-    days_difference = (current_date - term_start).days  # Calculate the difference in days
+    days_difference = (current_date - term_start).days # Calculate the difference in days
     if days_difference < 0:  # If the current date is before the term start date
         return "The current date is before the term start date"
-    current_week = int(days_difference / 7)
+    current_week = int(days_difference / 7) + 1
     return current_week
 
 def determine_which_term(current_week):
@@ -54,11 +54,11 @@ def get_left_term_weeks(term_order, current_week):
     Calculate the number of weeks left in the current term.
     """
     if term_order == 1:
-        return 15 - current_week + 1
+        return 16 - current_week
     elif term_order == 2:
-        return 30 - current_week + 1
+        return 31 - current_week
     elif term_order == 3:
-        return 37 - current_week + 1
+        return 38 - current_week
     return 0
 
 @app.route('/term-week', methods=['GET'])
@@ -67,7 +67,7 @@ def get_term_week():
     API endpoint to get the current term week.
     """
     try:
-        current_date = date.today()
+        current_date = date(2025,1,25)
         current_year = current_date.year
 
         # Determine the academic year
