@@ -108,6 +108,7 @@ def get_next_holiday():
         data = response.json()
         holidays = data["england-and-wales"]["events"]
         current_date = date.today()
+        current_date = date(2014,12,20)
 
         for holiday in holidays:
             holiday_date = datetime.strptime(holiday["date"], "%Y-%m-%d").date()
