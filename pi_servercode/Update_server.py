@@ -68,7 +68,9 @@ def get_term_week():
     """
     try:
         current_date = date.today()
-        current_date = date(2024,12,20)
+        ##current_date = date(2024,10,1)
+        ##current_date = date(2025,1,14)
+        ##current_date = date(2025,4,28)
         current_year = current_date.year
 
         # Determine the academic year
@@ -108,7 +110,8 @@ def get_next_holiday():
         data = response.json()
         holidays = data["england-and-wales"]["events"]
         current_date = date.today()
-        current_date = date(2024,12,20)
+        ##current_date = date(2024,12,20)
+        ##current_date = date(2024,10,1)
 
         for holiday in holidays:
             holiday_date = datetime.strptime(holiday["date"], "%Y-%m-%d").date()
