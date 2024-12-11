@@ -68,9 +68,9 @@ def get_term_week():
     """
     try:
         current_date = date.today()
-        ##current_date = date(2024,10,1)
-        ##current_date = date(2025,1,14)
-        ##current_date = date(2025,4,28)
+        ##current_date = date(2024,10,1) ##term1
+        ##current_date = date(2025,1,14) ##term2
+        ##current_date = date(2025,4,28) ##term3
         current_year = current_date.year
 
         # Determine the academic year
