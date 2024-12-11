@@ -1,0 +1,85 @@
+<html>
+<head>
+    <link rel="stylesheet" href="sdv.css">
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            gap: 20px;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .title h1 {
+            text-align: center;
+            font-size: 2em;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+        .text-description {
+            line-height: 1.6;
+        }
+        .title_content {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .media img, .media video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .footer {
+            text-align: center;
+        }
+        .footer-title h2 {
+            margin: 0;
+        }
+        .group-name p, .github-link a {
+            margin: 5px 0;
+        }
+        .github-link a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .github-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="title">
+            <h1>Joy Timer: Term and Holiday Tracking Device</h1>
+        </div>
+        <div class="content">
+            <div class="text-description">
+                <p><span class="title_content">DATASET<br/></span> This device uses custom JSON files, created by the team and uploaded to a Raspberry Pi, to store and manage data for academic terms, holiday schedules for China and the UK, and real-time timekeeping.</p>
+
+                <p><span class="title_content">DATA DEVICE (Physical)<br/></span> The physical component combines an LED strip and a pointer to visualize time. The LED strip represents the academic term's progress, with lights turning off as the term advances, while the pointer displays a countdown to upcoming holidays. This dual-display system provides a clear and intuitive way for users to track both term progress and holiday schedules.</p>
+
+                <p><span class="title_content">DATA DEVICE (Digital)<br/></span> The digital dashboard complements the physical device with detailed visualizations sourced from the JSON files on the Raspberry Pi. It includes ring charts for remaining days, reminders for holidays in China and the UK, and access to academic module information. Users can toggle between term-specific and holiday views, and the data dynamically updates for accuracy.</p>
+
+                <p><span class="title_content">HOW TO<br/></span> Use the Unity-based app to sync with the physical device. The app overlays augmented information via AR, enabling users to explore academic progress, view holidays, and interact with 3D models for a seamless planning experience.</p>
+            </div>
+            <div class="media">
+                <img src="sdv.png" alt="SDV G1 entity">
+                <video src="sdv.mp4" controls></video>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-title">
+                <h2>CE 2024 - 2025</h2>
+            </div>
+            <div class="group-name">
+                <p>Group JoyTimer</p>
+            </div>
+            <div class="github-link">
+                <a target="_blank" href="https://github.com/mk20661/SDV_Group_Assessignment">GitHub Link</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
