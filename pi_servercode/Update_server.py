@@ -68,6 +68,7 @@ def get_term_week():
     """
     try:
         current_date = date.today()
+        current_date = date(2024,12,20)
         current_year = current_date.year
 
         # Determine the academic year
