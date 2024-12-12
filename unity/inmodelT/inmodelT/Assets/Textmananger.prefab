@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1479379949692780808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8050491013429785447}
+  - component: {fileID: 5213164062376195930}
+  - component: {fileID: 4245360050056474505}
+  - component: {fileID: 6495961806987445480}
+  m_Layer: 0
+  m_Name: Textmananger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8050491013429785447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479379949692780808}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.2236874, y: 0.7922007, z: 0.5562225}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5213164062376195930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479379949692780808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec56f55f65830234b815fc669bbbcfb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UKBankHolidayName: {fileID: 0}
+  UKBankHolidayDate: {fileID: 0}
+  UKBankHolidayDayUntil: {fileID: 0}
+--- !u!114 &4245360050056474505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479379949692780808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a4a7f84b0be7494691faf8ab1ac31c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChineseHolidayName: {fileID: 0}
+  ChineseHolidayDate: {fileID: 0}
+  ChineseHolidayDayUntil: {fileID: 0}
+--- !u!114 &6495961806987445480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479379949692780808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c19adab94c95d49a2bb529bb8d713a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  course1NameText: {fileID: 0}
+  course2NameText: {fileID: 0}
+  course3NameText: {fileID: 0}
+  course4NameText: {fileID: 0}
+  courseDetailsText: {fileID: 0}
+  course1Button: {fileID: 0}
+  course2Button: {fileID: 0}
+  course3Button: {fileID: 0}
+  course4Button: {fileID: 0}

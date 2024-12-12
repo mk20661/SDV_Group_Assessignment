@@ -3,3 +3,20 @@ Test/arduino test code/dataTestCode/dataTestCode.ino
 pi_servercode/arduinoServerTestCode/password.h
 Test/arduino test code/sketch_APILEDservo/password.h
 Test/combineFristVersion/combineFristVersion/password.h
+
+# Unity build files
+*.apk
+*.so
+*.aar
+*.dll
+*.pdb
+*.dylib
+
+# Unity Library (generated files)
+[Ll]ibrary/
+
+# Unity Build Artifacts
+[Bb]uild/
+[Tt]emp/
+[Oo]bj/
+
