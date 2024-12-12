@@ -2,6 +2,8 @@
 
 ## About Joy Timer✨
 Joy Timer is a creative project designed to make tracking academic terms and holiday schedules easier and more engaging. Built as part of the CASA0019 module on **Sensor Data Visualization**, it combines a physical device with a digital dashboard and AR features to bring data to life. Whether you’re a student or simply curious about how time flies, Joy Timer gives you a clear and interactive way to stay organized.  
+
+  
 Demo: <https://mk20661.github.io/SDV_Group_Assessignment/>
 
 ---
