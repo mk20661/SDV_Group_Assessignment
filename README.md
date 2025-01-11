@@ -1,10 +1,9 @@
 # A highly customized electronic calendar developed based on Unity and ESP32 DROOM 32D – Joy Timer
 
-
 ## SDV_Group_Assessignment – Final Report
 
-
 ---
+
 ```
 Jinming Xia
 ID： 24214074
@@ -15,7 +14,6 @@ ID： 21130194
 Hongbing Qiu
 ID： 24065411
 ```
-
 
 Word Count: 2060 words
 
@@ -43,8 +41,8 @@ more, it reflects the challenges encountered during the development process and 
 solutions implemented. At the end of the report, we will summarize our reflections on
 the project and some possible improvements in the future.
 
-
 ---
+
 ### II. Design and development process
 
 #### 2.1 Data source and structure
@@ -67,8 +65,8 @@ the information flow, enabling the project to better serve a wide range of user 
 The detailed JSON structures used for UK bank holidays, Chinese holidays, and
 course deadlines can be found in Appendices A, B, and C respectively.
 
-
 ---
+
 #### 2.2 Design of hardware equipment
 
 This project selected ESP32 WROOM 32D as the central controller, its multi-core
@@ -95,27 +93,17 @@ characterized by low power consumption and high ease of use while being
 inexpensive to facilitate mass production. The basic circuit connection design is
 shown in Figure 1.
 
-
-![Figure 1](https://github.com/XLunaXX07/SDV-report/blob/main/Circuit%20Diagram%20of%20the%20Joy%20Timer.PNG?raw=true)
+![figure1](report_img/Circuit%20Diagram%20of%20the%20Joy%20Timer.png)
 
 *Figure 1 : Circuit Diagram of the Joy Timer*
 
-
-
-
-        
 Furthermore, the interaction between the hardware components and the overall system
 workflow is illustrated in Figure 2.
 
-
-![Figure 2](https://github.com/XLunaXX07/SDV-report/blob/main/System%20Logic%20Flowchart.png?raw=true)
+![Figure 2](report_img/System%20Logic%20Flowchart.png)
 
 *Figure 2 : System Logic Flowchart*
 
-
-
-
-        
 When it comes to Joy Timer's shell design, it has gone through a series of iterations
 (see Appendices D and E). Initially, the shell was designed for basic display
 requirements, however, this initial design presented too much information on the
@@ -134,15 +122,10 @@ completed, the focus shifts to fine modeling to ensure that the internal structu
 prototype can be adapted to the actual dimensions of the hardware. Detailed technical
 drawings from the precision modeling process can be found in Appendices F and G.
 
-
-![Figure 3](https://github.com/XLunaXX07/SDV-report/blob/main/Final%20Shell%20Design%20with%20Customizable%20Colors%20and%20Materials%20for%20Joy%20Timer.png?raw=true)
+![Figure 3](report_img/Final%20Shell%20Design%20with%20Customizable%20Colors%20and%20Materials%20for%20Joy%20Timer.png)
 
 *Figure 3 : Final Shell Design with Customizable Colors and Materials for Joy Timer*
 
-
-
-
-        
 Ultimately, the main body of the prototype shell of the final product is 3D printed
 with PLA material, and smooth surfaces and geometric structures are mostly used.
 The splice structure and friction connection between the parts are used. The dial uses
@@ -151,14 +134,12 @@ clock surface. The Visual Trigger uses plywood as material, laser engraving is u
 achieve an intaglio effect, and the whole is presented in a minimalist modern style
 (see Figure 4 ).
 
-
-![Figure 4](https://github.com/XLunaXX07/SDV-report/blob/main/Prototype%20Appearance%20of%20the%20Joy%20Timer.png?raw=true)
+![Figure 4](report_img/Prototype%20Appearance%20of%20the%20Joy%20Timer.png)
 
 *Figure 4 : Prototype Appearance of the Joy Timer*
 
-
-
 ---
+
 #### 2.3 Development of digital dashboards
 
 The UI design of the dashboard in the virtual appliance was developed entirely in
@@ -171,15 +152,10 @@ wood grain textures of the device model with the blue-purple theme of the dashbo
 itself, our team created an interactive interface that felt futuristic and technological
 (see Figure 5 ).
 
-
-![Figure 5](https://github.com/XLunaXX07/SDV-report/blob/main/UI%20design%20for%20the%20dashboard%20in%20digital%20device.png?raw=true)
+![Figure 5](report_img/UI%20design%20for%20the%20dashboard%20in%20digital%20device.png)
 
 *Figure 5 : UI design for the dashboard in digital device*
 
-
-
-
-        
 The AR interaction functionality was subsequently integrated into the virtual device,
 leveraging image tracking for model generation and enabling the movement, scaling,
 and rotation of digital models. Additional features included holiday video playback
@@ -187,11 +163,11 @@ with interactive effects and slideshow presentations for course-related content.
 interactions were controlled through custom C# scripts implemented in Unity (see
 Figure 6 ).
 
-![Figure 6](https://github.com/XLunaXX07/SDV-report/blob/main/Example%20of%20Unity%20Scripts%20for%20AR%20Interaction%20and%20Functionality.png?raw=true)
+![Figure 6](report_img/Example%20of%20Unity%20Scripts%20for%20AR%20Interaction%20and%20Functionality.png)
 *Figure 6 : Example of Unity Scripts for AR Interaction and Functionality*
 
-
 ---
+
 #### 2.4 Data flow and system architecture
 
 In this project, data is obtained from several sources, including the UK GOV API
@@ -206,14 +182,12 @@ number of weeks remaining in the current semester. In the virtual appliance, dif
 content blocks in the dashboard send different requests, filling them with the returned
 data.
 
-
-![Figure 7](https://github.com/XLunaXX07/SDV-report/blob/main/Data%20Flow%20and%20Processing%20Architecture.png?raw=true)
+![Figure 7](report_img/Data%20Flow%20and%20Processing%20Architecture.png)
 
 *Figure 7 : Data Flow and Processing Architecture*
 
-
-
 ---
+
 ### III. Technical challenges and solutions
 
 One of the challenges is related to data retrieval. When using the UK Bank Holiday
@@ -234,8 +208,8 @@ continuously regenerated the virtual model. To solve this problem, we disabled t
 image target script after identifying the image and generating the virtual model. This
 ensures that Lean Touch scripts work properly.
 
-
 ---
+
 ### IV. Reflection
 
 The Joy Timer project successfully integrates physical devices with digital devices,
@@ -309,16 +283,13 @@ https://servodatabase.com/servo/futaba/bls153 [Accessed 7 Jan. 2025].
 
 Savox Shop, n.d. Savox SH-0255MG Servo. Available at:https://www.savox-shop.com/en/savox-sh-0255mgservo.html [Accessed 7 Jan. 2025].
 
-
-
 ---
 
 ### Appendix
 
-![Appendix A](https://github.com/XLunaXX07/SDV-report/blob/main/Appendix%20A.png?raw=true)
+![Appendix A](report_img/Appendix%20A.png)
 
 *Appendix A: JSON Snippet Example for UK Bank Holidays*
-    
 
 This JSON structure stores the details of each UK bank holiday, including the name of
 the holiday (for example "Christmas"), the date, and so on.
@@ -333,13 +304,11 @@ bunting：A Boolean value (true or false) indicating whether decorative flags an
 banners are customary to be displayed on holidays. When set to true, it denotes
 traditional decorating practices for major celebrations.
 
-
-
 ---
-![Appendix B](https://github.com/XLunaXX07/SDV-report/blob/main/Appendix%20B.png?raw=true)
+
+![Appendix B](report_img/Appendix%20B.png)
 
 *Appendix B: JSON Snippet Example e for Chinese Holidays*
-    
 
 The data is keyed by date and stores information about holidays.
 
@@ -354,11 +323,9 @@ it is a regular working day with no official holiday status.
 
 ---
 
-
-![Appendix C](https://github.com/XLunaXX07/SDV-report/blob/main/Appendix%20C.png?raw=true)
+![Appendix C](report_img/Appendix%20C.png)
 
 *Appendix C: JSON Snippet Example for Course Task Deadlines*
-    
 
 This section stores detailed deadline information for assessment tasks across various
 courses within this module, organized by course category:
@@ -381,32 +348,28 @@ time：The time by which the task must be submitted.
 
 ---
 
-![Appendix D](https://github.com/XLunaXX07/SDV-report/blob/main/Appendix%20D.JPG?raw=true)
+![Appendix D](report_img/Appendix%20D.jpg)
 
 *Appendix D: Early stage design sketches for the shell, illustrating initial ideas for displaying
 semester week countdown and holiday countdown*
-    
 
 ---
 
-![Appendix E](https://github.com/XLunaXX07/SDV-report/blob/main/Appendix%20E.JPG?raw=true)
+![Appendix E](report_img/Appendix%20E.jpg)
 
 *Appendix E: Variations of SketchUp models created during Stage 2 of the prototype
 development, focusing on simplicity and modularity*
-    
 
 ---
 
-![Appendix F](https://github.com/XLunaXX07/SDV-report/blob/main/Appendix%20F.png?raw=true)
+![Appendix F](report_img/Appendix%20F.png)
 
 *Appendix F: Detailed Technical Drawings from the Precision Modeling Process (a)*
-    
 
 ---
 
-![Appendix G](https://github.com/XLunaXX07/SDV-report/blob/main/Appendix%20G.png?raw=true)
+![Appendix G](report_img/Appendix%20G.png)
 
 *Appendix G: Detailed Technical Drawings from the Precision Modeling Process (b)*
-    
 
 ---
