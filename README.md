@@ -348,14 +348,14 @@ time：The time by which the task must be submitted.
 
 ---
 
-![Appendix D](report_img/Appendix%20D.jpg)
+![Appendix D](report_img/Appendix%20D.JPG)
 
 *Appendix D: Early stage design sketches for the shell, illustrating initial ideas for displaying
 semester week countdown and holiday countdown*
 
 ---
 
-![Appendix E](report_img/Appendix%20E.jpg)
+![Appendix E](report_img/Appendix%20E.JPG)
 
 *Appendix E: Variations of SketchUp models created during Stage 2 of the prototype
 development, focusing on simplicity and modularity*
