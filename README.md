@@ -93,7 +93,7 @@ characterized by low power consumption and high ease of use while being
 inexpensive to facilitate mass production. The basic circuit connection design is
 shown in Figure 1.
 
-![figure1](report_img/Circuit%20Diagram%20of%20the%20Joy%20Timer.png)
+![figure1](report_img/Circuit%20Diagram%20of%20the%20Joy%20Timer.PNG)
 
 *Figure 1 : Circuit Diagram of the Joy Timer*
 
